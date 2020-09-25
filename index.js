@@ -4,7 +4,7 @@ module.exports = {
         var isVue3 = Vue.version.startsWith('3')
         options = options || { name: 'smoothscroll' }
         Vue.directive(options.name, {
-            inserted: function (el, binding) {
+            [isVue3 ? 'mounted' : 'inserted']: function (el, binding) {
                 SmoothScroll(el, binding.value['duration'], binding.value['callback'], binding.value['context'], binding.value['axis'])
             }
         })
